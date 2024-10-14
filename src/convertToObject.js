@@ -6,18 +6,18 @@
  * @return {object}
  */
 function convertToObject(sourceString) {
-  const result = {};
-  const stringSplitted = sourceString.split(';');
+  const cssStylesObject = {};
+  const splitStyles = sourceString.split(';');
 
-  const filtered = stringSplitted.filter((item) => item.trim().length);
+  const filtered = splitStyles.filter((item) => item.trim().length);
 
-  const dividedWords = filtered.map((words) => words.split(':'));
+  const keyValuePairs = filtered.map((words) => words.split(':'));
 
-  dividedWords.forEach(([key, value]) => {
-    result[key.trim()] = value.trim();
+  keyValuePairs.forEach(([key, value]) => {
+    cssStylesObject[key.trim()] = value.trim();
   });
 
-  return result;
+  return cssStylesObject;
 }
 
 module.exports = convertToObject;
