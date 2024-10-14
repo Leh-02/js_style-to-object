@@ -7,14 +7,15 @@
  */
 function convertToObject(sourceString) {
   const result = {};
-  const stringArray = sourceString.split(';');
-  const filterArray = stringArray.filter((item) => item.trim().length);
+  const stringSplitted = sourceString.split(';');
 
-  for (const words of filterArray) {
-    const [key, value] = words.split(':');
+  const filtered = stringSplitted.filter((item) => item.trim().length);
 
+  const dividedWords = filtered.map((words) => words.split(':'));
+
+  dividedWords.forEach(([key, value]) => {
     result[key.trim()] = value.trim();
-  }
+  });
 
   return result;
 }
